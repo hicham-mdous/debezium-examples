@@ -14,14 +14,15 @@ services:
      - zookeeper
     environment:
      - ZOOKEEPER_CONNECT=zookeeper:2181
-  mysql:
-    image: debezium/example-mysql:${DEBEZIUM_VERSION}
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
     ports:
-     - 3306:3306
+      - 1433:1433
     environment:
-     - MYSQL_ROOT_PASSWORD=debezium
-     - MYSQL_USER=mysqluser
-     - MYSQL_PASSWORD=mysqlpw 
+      - ACCEPT_EULA=Y
+      - MSSQL_PID=Standard
+      - SA_PASSWORD=Password!
+      - MSSQL_AGENT_ENABLED=true
   postgres:
     image: debezium/postgres:9.6
     ports:
@@ -39,7 +40,7 @@ services:
      - 5005:5005
     links:
      - kafka
-     - mysql
+     - sqlserver
      - postgres
     environment:
      - BOOTSTRAP_SERVERS=kafka:9092

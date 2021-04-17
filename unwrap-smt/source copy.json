@@ -1,10 +1,10 @@
 {
     "name": "inventory-connector",
     "config": {
-        "connector.class" : "io.debezium.connector.sqlserver.SqlServerConnector",
+        "connector.class": "io.debezium.connector.mysql.MySqlConnector",
         "tasks.max": "1",
-        "database.hostname": "mssql",
-        "database.port": "1433",
+        "database.hostname": "mysql",
+        "database.port": "3306",
         "database.user": "debezium",
         "database.password": "dbz",
         "database.server.id": "184054",
